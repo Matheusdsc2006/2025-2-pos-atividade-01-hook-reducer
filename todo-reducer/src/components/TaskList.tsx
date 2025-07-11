@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Dispatch } from 'react';
-import { TasksAction, Task } from '../../types/task';
+import { TasksAction, Task } from '../types/task';
 
 export function TaskList({
   tasks,
@@ -43,20 +43,12 @@ export function TaskList({
             </div>
           </CardContent>
           <CardFooter className="flex justify-end gap-2">
-            <Link href={`/todos/edit/${task.id}`}>
-              <Button variant="outline">Edit</Button>
+            <Link href={`/tarefas/${task.id}`}>
+              <Button variant="outline">Editar</Button>
             </Link>
-            <Button
-              variant="destructive"
-              onClick={() =>
-                dispatch({
-                  type: 'deleted',
-                  id: task.id,
-                })
-              }
-            >
-              Delete
-            </Button>
+            <Link href={`/tarefas/${task.id}/apagar`}>
+              <Button variant="destructive">Apagar</Button>
+            </Link>
           </CardFooter>
         </Card>
       ))}
